@@ -1,0 +1,34 @@
+You are assisting with a pharmaceutical tender submission. Here are the details:
+
+- Product: [PRODUCT_NAME]
+- Country: [COUNTRY]
+- Tender Authority: [AUTHORITY]
+- Tender Quantity: [TENDER_QUANTITY]
+- IB Purchase Price: $[IBPP]
+- Last VRL CIF to Client: $[LAST_CIF]
+- Last Winning Price: $[LAST_PRICE] by [WINNER] in [YEAR] for [LAST_QTY]
+- Registration Status: [REGISTRATION]
+- Freight: [FREIGHT]%
+- Client Margin: [MARGIN]%
+- Client Expenses: [EXPENSES]%
+- Batch Size: [BATCH_SIZE] units
+- Batch Cost: $[BATCH_COST] per batch
+- Local Preference: [LOCAL_PREF]%
+- Grade: [GRADE]
+- Department: [DEPARTMENT]
+- FOC: [FOC]
+- Supply Remarks: [SUPPLY_REMARKS]
+- Export Data:
+[EXPORTS_DATA]
+- Registered Competitors:
+[COMPETITORS_DATA]
+
+Please provide:
+1. Final quote to ministry (Aggressive / Balanced / Conservative)
+2. Price to client
+3. Ex-works recommendation
+4. GC vs IBPP
+5. Risk flags or loss logic
+6. Strategic commentary
+7. Geopolitical/FX considerations
+8. Final advice quote range

@@ -1,0 +1,1212 @@
+/* Matrix Neural Network Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --matrix-green: #00ff00;
+    --matrix-dark-green: #006600;
+    --matrix-darker-green: #004400;
+    --matrix-light-green: #0dff0d;
+    --matrix-neon-green: #39ff14;
+    --matrix-black: #000000;
+    --matrix-dark-gray: #0a0a0a;
+    --matrix-medium-gray: #1a1a1a;
+    --matrix-light-gray: #f0f8f0;
+    --matrix-border: #00ff0030;
+    --matrix-glow: #00ff0050;
+    --matrix-text-on-light: #003300;
+    --matrix-success: #00cc00;
+    --matrix-primary: #008800;
+}
+
+body {
+    font-family: 'Source Code Pro', 'Orbitron', monospace;
+    background: var(--matrix-black);
+    color: var(--matrix-green);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: crosshair;
+    position: relative;
+}
+
+/* Matrix Typography System */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', 'Source Code Pro', monospace;
+    color: var(--matrix-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--matrix-green);
+    font-weight: 600;
+}
+
+label {
+    font-family: 'Source Code Pro', monospace;
+    color: var(--matrix-green);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+p, span, div {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.text-muted, small {
+    color: rgba(0, 255, 0, 0.6);
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8rem;
+}
+
+/* Matrix Accessibility Improvements */
+.matrix-text-dark {
+    color: var(--matrix-text-on-light);
+}
+
+.matrix-readable {
+    color: var(--matrix-darker-green);
+    font-weight: 600;
+}
+
+/* Enhanced contrast for important elements */
+.card-body {
+    color: var(--matrix-green);
+}
+
+.form-group label {
+    color: var(--matrix-light-green);
+    text-shadow: 0 0 3px var(--matrix-green);
+}
+
+/* Ensure icon compatibility */
+i[class*="fa"] {
+    color: var(--matrix-green);
+    text-shadow: 0 0 3px var(--matrix-green);
+}
+
+/* Matrix Background Canvas */
+.matrix-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+/* Matrix Loading Screen */
+.matrix-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--matrix-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease-out;
+}
+
+.matrix-loading-text {
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.typing-text {
+    margin: 20px 0;
+    opacity: 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+    animation: typeWriter 2s ease-in-out forwards;
+}
+
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 2s; }
+.delay-3 { animation-delay: 3s; }
+
+@keyframes typeWriter {
+    0% { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% { 
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+/* Simplified Animation Enhancements */
+.form-control, .table-input {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.result-card {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Loading states */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Enhanced form field styles */
+.form-control:focus, .table-input:focus {
+    outline: none;
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 0 3px var(--matrix-glow);
+}
+
+/* Success and error states */
+.form-control.success {
+    border-color: var(--matrix-success);
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.form-control.error {
+    border-color: #ff4444;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Matrix Coming Soon Section */
+.coming-soon {
+    background: linear-gradient(135deg, var(--matrix-dark-gray) 0%, var(--matrix-medium-gray) 100%);
+    padding: 40px 20px;
+    margin: 40px 0;
+    border-radius: 12px;
+    border: 1px solid var(--matrix-border);
+    box-shadow: 0 0 20px var(--matrix-glow);
+}
+
+.coming-soon-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.coming-soon h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--matrix-green);
+    font-weight: 700;
+}
+
+.coming-soon p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: var(--matrix-green);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, var(--matrix-dark-gray), var(--matrix-medium-gray));
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px var(--matrix-glow);
+    border: 1px solid var(--matrix-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--matrix-green);
+    border-color: var(--matrix-green);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--matrix-green);
+    margin-bottom: 15px;
+}
+
+.feature-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--matrix-green);
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--matrix-green);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.coming-soon-note {
+    font-style: italic;
+    color: var(--matrix-green);
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+/* Matrix Enhanced Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--matrix-medium-gray);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--matrix-glow);
+    border: 1px solid var(--matrix-border);
+    font-family: 'Source Code Pro', monospace;
+}
+
+.comparison-table th {
+    background: linear-gradient(135deg, var(--matrix-dark-green), var(--matrix-darker-green));
+    color: var(--matrix-light-green);
+    padding: 18px 15px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.comparison-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--matrix-border);
+    font-weight: 500;
+    position: relative;
+    background: var(--matrix-dark-gray);
+    color: var(--matrix-green);
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.comparison-table td:first-child {
+    font-weight: 700;
+    background: var(--matrix-dark-gray);
+    text-align: left;
+    border-right: 2px solid var(--matrix-border);
+    color: var(--matrix-green);
+}
+
+/* Positive/Negative indicators for comparison */
+.comparison-table td[id*="Diff"]:not(:empty)::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.comparison-table td[id*="Var"]:not(:empty) {
+    font-weight: 700;
+}
+
+/* You would set these classes dynamically in JavaScript based on positive/negative values */
+.positive-variance {
+    color: #059669;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.negative-variance {
+    color: #dc2626;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.neutral-variance {
+    color: #d97706;
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.comparison-summary {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 1px solid #0ea5e9;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.comparison-summary h4 {
+    color: #0c4a6e;
+    margin-bottom: 10px;
+}
+
+/* Matrix Interface Container */
+.matrix-interface {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Matrix Neural Network Header */
+.header {
+    background: linear-gradient(135deg, var(--matrix-dark-gray) 0%, var(--matrix-medium-gray) 100%);
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 0 20px var(--matrix-glow),
+        inset 0 1px 0 rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--matrix-border);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header:hover {
+    box-shadow: 
+        0 0 30px var(--matrix-green),
+        inset 0 1px 0 rgba(0, 255, 0, 0.2);
+    border-color: var(--matrix-green);
+    transform: translateY(-2px);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+    animation: matrixScan 3s infinite;
+}
+
+@keyframes matrixScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--matrix-dark-green), var(--matrix-green), var(--matrix-light-green));
+}
+
+/* Matrix Neural Interface Description */
+.matrix-description {
+    background: linear-gradient(135deg, var(--matrix-dark-gray) 0%, rgba(0, 255, 0, 0.05) 100%);
+    color: var(--matrix-green);
+    padding: 25px 35px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 1px solid var(--matrix-border);
+    box-shadow: 
+        0 0 20px var(--matrix-glow),
+        inset 0 1px 0 rgba(0, 255, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.matrix-typing-text {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.matrix-prompt {
+    color: var(--matrix-neon-green);
+    font-weight: 700;
+}
+
+.typing-effect {
+    animation: typing 3s infinite;
+}
+
+@keyframes typing {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.7; }
+}
+
+.matrix-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-text {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.matrix-instruction {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.matrix-header-glow {
+    font-size: 0.8rem;
+    color: var(--matrix-neon-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-image {
+    max-height: 80px;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: 
+        drop-shadow(0 0 10px var(--matrix-green))
+        drop-shadow(0 0 20px var(--matrix-green))
+        sepia(1) saturate(2) hue-rotate(120deg);
+    transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+    filter: 
+        drop-shadow(0 0 15px var(--matrix-neon-green))
+        drop-shadow(0 0 30px var(--matrix-neon-green))
+        sepia(1) saturate(2) hue-rotate(120deg)
+        brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Dashboard Styles */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Styles */
+/* Matrix Neural Interface Cards */
+.card {
+    background: linear-gradient(135deg, var(--matrix-dark-gray) 0%, var(--matrix-medium-gray) 100%);
+    border-radius: 12px;
+    box-shadow: 
+        0 0 20px var(--matrix-glow),
+        inset 0 1px 0 rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--matrix-border);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--matrix-green), var(--matrix-neon-green), var(--matrix-light-green));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.03), transparent);
+    animation: matrixCardScan 4s infinite;
+}
+
+@keyframes matrixCardScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 0 30px var(--matrix-green),
+        inset 0 2px 0 rgba(0, 255, 0, 0.2);
+    border-color: var(--matrix-green);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--matrix-medium-gray) 0%, rgba(0, 255, 0, 0.05) 100%);
+    color: var(--matrix-green);
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--matrix-border);
+    position: relative;
+}
+
+.card-header h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header i {
+    font-size: 1.3rem;
+}
+
+.card-body {
+    padding: 30px;
+    background: #ffffff;
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Matrix Neural Input Fields */
+.form-control {
+    padding: 14px 18px;
+    border: 1px solid var(--matrix-border);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--matrix-green);
+    font-size: 1rem;
+    font-family: 'Source Code Pro', monospace;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.5),
+        0 0 0 rgba(0, 255, 0, 0);
+}
+
+.form-control:focus {
+    border-color: var(--matrix-green);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.5),
+        0 0 10px var(--matrix-glow);
+    transform: translateY(-1px);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.form-control::placeholder {
+    color: rgba(0, 255, 0, 0.4);
+    font-family: 'Source Code Pro', monospace;
+}
+
+.dropdown {
+    cursor: crosshair;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2300ff00' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+/* Table Styles */
+/* Matrix Data Tables */
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--matrix-border);
+    background: var(--matrix-medium-gray);
+    margin-top: 20px;
+    box-shadow: 0 0 15px var(--matrix-glow);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: var(--matrix-medium-gray);
+    font-family: 'Source Code Pro', monospace;
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--matrix-dark-green), var(--matrix-darker-green));
+    color: var(--matrix-light-green);
+    font-weight: 700;
+    padding: 16px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--matrix-border);
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.data-table td {
+    padding: 14px;
+    border-bottom: 1px solid var(--matrix-border);
+    vertical-align: middle;
+    background: var(--matrix-dark-gray);
+    color: var(--matrix-green);
+}
+
+.data-table tr:hover td {
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.table-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--matrix-border);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--matrix-green);
+    font-size: 0.9rem;
+    font-family: 'Source Code Pro', monospace;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.table-input:focus {
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 0 3px var(--matrix-glow);
+    background: rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.table-input::placeholder {
+    color: rgba(0, 255, 0, 0.4);
+    font-family: 'Source Code Pro', monospace;
+}
+
+/* Button Styles */
+/* Matrix Neural Control Buttons */
+.btn {
+    padding: 12px 24px;
+    border: 1px solid var(--matrix-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Orbitron', monospace;
+    cursor: crosshair;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 255, 0, 0.1) 100%);
+    color: var(--matrix-green);
+    border: 1px solid var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-glow);
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 255, 0, 0.2) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--matrix-green);
+    color: var(--matrix-neon-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.btn-secondary {
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--matrix-green);
+    border: 1px solid var(--matrix-border);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: var(--matrix-green);
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px var(--matrix-green);
+    color: var(--matrix-neon-green);
+    text-shadow: 0 0 8px var(--matrix-green);
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.export-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+.add-row-btn {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Matrix Result Cards */
+.result-card {
+    background: linear-gradient(135deg, var(--matrix-dark-gray), var(--matrix-medium-gray));
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--matrix-border);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--matrix-glow);
+    color: var(--matrix-green);
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 20px var(--matrix-green);
+}
+
+.result-card.primary {
+    background: linear-gradient(135deg, var(--matrix-dark-green) 0%, var(--matrix-darker-green) 100%);
+    color: var(--matrix-light-green);
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 25px var(--matrix-green);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.result-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.8;
+    font-family: 'Source Code Pro', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-card.primary .result-label {
+    opacity: 0.9;
+    color: var(--matrix-neon-green);
+}
+
+.result-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--matrix-green);
+    font-family: 'Orbitron', monospace;
+}
+
+.result-card.primary .result-value {
+    color: var(--matrix-neon-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+/* Analysis Table */
+.analysis-table-container {
+    margin-top: 30px;
+}
+
+/* Matrix Analysis Table */
+.analysis-table-container h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--matrix-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.analysis-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--matrix-medium-gray);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--matrix-border);
+    font-size: 0.9rem;
+    margin-top: 25px;
+    box-shadow: 0 0 15px var(--matrix-glow);
+    font-family: 'Source Code Pro', monospace;
+}
+
+.analysis-table th {
+    background: linear-gradient(135deg, var(--matrix-dark-green), var(--matrix-darker-green));
+    color: var(--matrix-light-green);
+    font-weight: 700;
+    padding: 18px 16px;
+    text-shadow: 0 0 5px var(--matrix-green);
+    text-align: left;
+    border-bottom: 2px solid var(--matrix-border);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.analysis-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--matrix-border);
+    font-weight: 500;
+    color: var(--matrix-green);
+    background: var(--matrix-dark-gray);
+}
+
+.analysis-table tr:last-child td {
+    border-bottom: none;
+}
+
+.analysis-table tr:hover td {
+    background: rgba(0, 255, 0, 0.05);
+}
+
+/* Footer */
+/* Matrix Neural Footer */
+.matrix-footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background: linear-gradient(135deg, var(--matrix-dark-gray) 0%, var(--matrix-medium-gray) 100%);
+    border-radius: 12px;
+    border: 1px solid var(--matrix-border);
+    color: var(--matrix-green);
+    font-size: 0.9rem;
+    box-shadow: 
+        0 0 20px var(--matrix-glow),
+        inset 0 1px 0 rgba(0, 255, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.matrix-footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.matrix-copyright {
+    font-family: 'Source Code Pro', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.matrix-creator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.creator-tag {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    color: var(--matrix-neon-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.matrix-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: 
+        drop-shadow(0 0 10px var(--matrix-green))
+        hue-rotate(120deg)
+        brightness(1.2);
+    transition: all 0.3s ease;
+}
+
+.matrix-logo:hover {
+    filter: 
+        drop-shadow(0 0 15px var(--matrix-neon-green))
+        hue-rotate(120deg)
+        brightness(1.5);
+    transform: scale(1.1);
+}
+
+.matrix-footer-scan {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.05), transparent);
+    animation: matrixFooterScan 6s infinite;
+}
+
+@keyframes matrixFooterScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header-subtitle p {
+        font-size: 1rem;
+    }
+    
+    .card-header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .result-value {
+        font-size: 1.5rem;
+    }
+    
+    .data-table {
+        font-size: 0.8rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo i {
+        font-size: 2rem;
+    }
+    
+    .card-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .form-control,
+    .table-input {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation Classes - Simplified for performance */
+.fade-in {
+    opacity: 1;
+}
+
+/* Simplified loading states for better performance */
+.calculate-loading {
+    opacity: 0.7;
+}
+
+/* Success/Error States */
+.input-success {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1) !important;
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+}
+
+.profit-positive {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.profit-negative {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.profit-neutral {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+/* Loading States */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Simplified loading animation */
+.loading {
+    opacity: 0.6;
+}
