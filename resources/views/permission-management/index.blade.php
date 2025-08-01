@@ -102,7 +102,7 @@
                                 <table class="table table-bordered table-hover">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th class="sticky-column">Permission</th>
+                                            <th class="sticky-column text-white">Permission</th>
                                             @foreach($roles as $role)
                                                 <th class="text-center">
                                                     <div class="d-flex flex-column align-items-center">
@@ -111,7 +111,7 @@
                                                         @else
                                                             <i class="fas fa-user-tag text-info mb-1"></i>
                                                         @endif
-                                                        <small>{{ $role->name }}</small>
+                                                        <small class="text-white">{{ $role->name }}</small>
                                                     </div>
                                                 </th>
                                             @endforeach
